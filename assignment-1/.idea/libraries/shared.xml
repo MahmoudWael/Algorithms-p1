@@ -1,0 +1,17 @@
+<component name="libraryTable">
+  <library name="shared">
+    <CLASSES>
+      <root url="jar://$PROJECT_DIR$/shared/algs4.jar!/" />
+      <root url="jar://$PROJECT_DIR$/shared/stdlib.jar!/" />
+      <root url="file://$PROJECT_DIR$/shared" />
+    </CLASSES>
+    <JAVADOC />
+    <SOURCES>
+      <root url="jar://$PROJECT_DIR$/shared/algs4.jar!/" />
+      <root url="jar://$PROJECT_DIR$/shared/stdlib.jar!/" />
+      <root url="file://$PROJECT_DIR$/shared" />
+    </SOURCES>
+    <jarDirectory url="file://$PROJECT_DIR$/shared" recursive="false" />
+    <jarDirectory url="file://$PROJECT_DIR$/shared" recursive="false" type="SOURCES" />
+  </library>
+</component>

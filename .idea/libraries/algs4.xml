@@ -1,0 +1,13 @@
+<component name="libraryTable">
+  <library name="algs4">
+    <CLASSES>
+      <root url="jar://$PROJECT_DIR$/algorithms-p1/assignment-1/shared/algs4.jar!/" />
+      <root url="jar://$PROJECT_DIR$/algorithms-p1/assignment-1/shared/stdlib.jar!/" />
+    </CLASSES>
+    <JAVADOC />
+    <SOURCES>
+      <root url="jar://$PROJECT_DIR$/algorithms-p1/assignment-1/shared/algs4.jar!/" />
+      <root url="jar://$PROJECT_DIR$/algorithms-p1/assignment-1/shared/stdlib.jar!/" />
+    </SOURCES>
+  </library>
+</component>
