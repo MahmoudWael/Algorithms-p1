@@ -1,5 +1,4 @@
 import edu.princeton.cs.algs4.StdOut;
-import org.jetbrains.annotations.Contract;
 
 import java.util.Iterator;
 
@@ -105,6 +104,7 @@ public class Deque<Item> implements Iterable<Item> {
 
         @Override
         public void remove() {
+            throw new UnsupportedOperationException("Unsupported Operation!");
         }
 
     }
@@ -127,7 +127,6 @@ public class Deque<Item> implements Iterable<Item> {
         for (int item : deque) {
             StdOut.println(item);
         }
-//        System.exit(1);
 
         StdOut.println("=========remove first then last================");
 
@@ -147,9 +146,13 @@ public class Deque<Item> implements Iterable<Item> {
         StdOut.println("is empty? " + deque.isEmpty());
 
         StdOut.println("==========print list===============");
+        Iterator item = deque.iterator();
+        int i;
+        while (item.hasNext()) {
+            i = (int) item.next();
+            StdOut.println(i);
+//            item.remove();
 
-        for (int item : deque) {
-            StdOut.println(item);
         }
         StdOut.println("=========remove last * 2 ================");
 
