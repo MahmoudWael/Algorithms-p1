@@ -1,6 +1,7 @@
 import edu.princeton.cs.algs4.StdOut;
 
 import java.util.Iterator;
+import java.util.NoSuchElementException;
 
 public class Deque<Item> implements Iterable<Item> {
     private Node first;
@@ -31,6 +32,9 @@ public class Deque<Item> implements Iterable<Item> {
 
     // add the item to the front
     public void addFirst(Item item) {
+        if (item == null) {
+            throw new IllegalArgumentException();
+        }
         Node oldFirst = first;
         first = new Node();
         first.item = item;
@@ -45,6 +49,9 @@ public class Deque<Item> implements Iterable<Item> {
 
     // add the item to the back
     public void addLast(Item item) {
+        if (item == null) {
+            throw new IllegalArgumentException();
+        }
         Node oldLast = last;
         last = new Node();
         last.item = item;
@@ -60,6 +67,9 @@ public class Deque<Item> implements Iterable<Item> {
 
     // remove and return the item from the front
     public Item removeFirst() {
+        if (isEmpty()) {
+            throw new NoSuchElementException();
+        }
         Item item = first.item;
         if (size() == 1) {
             first = null;
@@ -74,6 +84,9 @@ public class Deque<Item> implements Iterable<Item> {
 
     // remove and return the item from the back
     public Item removeLast() {
+        if (isEmpty()) {
+            throw new NoSuchElementException();
+        }
         Item item = last.item;
         if (size() == 1) {
             first = null;
@@ -97,6 +110,9 @@ public class Deque<Item> implements Iterable<Item> {
 
         @Override
         public Item next() {
+            if (!hasNext()) {
+                throw new NoSuchElementException();
+            }
             Item item = current.item;
             current = current.next;
             return item;
@@ -145,15 +161,6 @@ public class Deque<Item> implements Iterable<Item> {
 
         StdOut.println("is empty? " + deque.isEmpty());
 
-        StdOut.println("==========print list===============");
-        Iterator item = deque.iterator();
-        int i;
-        while (item.hasNext()) {
-            i = (int) item.next();
-            StdOut.println(i);
-//            item.remove();
-
-        }
         StdOut.println("=========remove last * 2 ================");
 
         StdOut.println(deque.removeLast());

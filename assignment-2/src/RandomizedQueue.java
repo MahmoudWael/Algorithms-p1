@@ -1,6 +1,7 @@
 import edu.princeton.cs.algs4.StdRandom;
 
 import java.util.Iterator;
+import java.util.NoSuchElementException;
 
 public class RandomizedQueue<Item> implements Iterable<Item> {
     private int N;
@@ -19,18 +20,24 @@ public class RandomizedQueue<Item> implements Iterable<Item> {
 
     // return the number of items on the randomized queue
     public int size() {
-        return itemsArray.length;
+        return N;
     }
 
     // add the item
     public void enqueue(Item item) {
-        if (N == size()) resize(size() * 2);
+        if (item == null) {
+            throw new IllegalArgumentException();
+        }
+        if (N == itemsArray.length) resize(itemsArray.length * 2);
         itemsArray[N++] = item;
     }
 
     // remove and return a random item
     public Item dequeue() {
-        if (N > 0 && N == size() / 4) resize(size() / 2);
+        if (isEmpty()) {
+            throw new NoSuchElementException();
+        }
+        if (N > 0 && N == itemsArray.length / 4) resize(itemsArray.length / 2);
         int rand = StdRandom.uniform(0, N);
         Item item = itemsArray[rand];
         itemsArray[rand] = itemsArray[--N];
@@ -40,6 +47,9 @@ public class RandomizedQueue<Item> implements Iterable<Item> {
 
     // return a random item (but do not remove it)
     public Item sample() {
+        if (isEmpty()) {
+            throw new NoSuchElementException();
+        }
         int rand = StdRandom.uniform(0, N);
         return itemsArray[rand];
     }
@@ -73,6 +83,9 @@ public class RandomizedQueue<Item> implements Iterable<Item> {
 
         @Override
         public Item next() {
+            if (!hasNext()) {
+                throw new NoSuchElementException();
+            }
             return itemsArray[randPos[--size]];
         }
 
@@ -101,16 +114,25 @@ public class RandomizedQueue<Item> implements Iterable<Item> {
         rq.enqueue(3);
         rq.enqueue(5);
         System.out.println("======= print items===========");
+
         for (int item : rq) {
             System.out.println(item);
         }
         System.out.println("======= remove  2 items ======");
+
         System.out.println(rq.dequeue());
         System.out.println(rq.dequeue());
+
         System.out.println("======= print sample =========");
         System.out.println(rq.sample());
 
+        System.out.println("========== print list=========");
+        for (int item : rq) {
+            System.out.println(item);
+        }
+        System.out.println("========== list size=========");
 
+        System.out.println(rq.size());
     }
 
 }
